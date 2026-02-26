@@ -9,6 +9,8 @@ jobs:
         with:
           arch: x64
       - uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgCommitId: '544a4c5c297e60e4ac4a5a1810df66748d908869'
       - name: 测试构建环境
         shell: cmd
         run: |
@@ -23,6 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgCommitId: '544a4c5c297e60e4ac4a5a1810df66748d908869'
       - name: 测试构建环境
         run: |
           cmake --version
@@ -36,6 +40,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgCommitId: '544a4c5c297e60e4ac4a5a1810df66748d908869'
       - name: 测试构建环境
         run: |
           cmake --version
