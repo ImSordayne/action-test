@@ -5,6 +5,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: microsoft/setup-msvc@v2
       - name: 测试CMake
         run: cmake --version
       - name: 测试MSVC
@@ -16,7 +17,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: microsoft/setup-msvc@v2
       - name: 测试CMake
         run: cmake --version
       - name: 测试clang
