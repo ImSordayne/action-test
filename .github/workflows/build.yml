@@ -15,7 +15,13 @@ jobs:
       - name: 编译
         shell: cmd
         run: |
-          cmake --build build 
+          cmake --build build
+      - name: 上传 Windows 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: build/
+          retention-days: 30
 
   test-osx:
     runs-on: macos-latest
@@ -26,7 +32,13 @@ jobs:
           cmake -S. -B build -G Ninja
       - name: 编译
         run: |
-          cmake --build build 
+          cmake --build build
+      - name: 上传 macOS 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-build
+          path: build/
+          retention-days: 30
 
   test-ubuntu:
     runs-on: ubuntu-latest
@@ -37,4 +49,10 @@ jobs:
           cmake -S. -B build -G Ninja
       - name: 编译
         run: |
-          cmake --build build 
+          cmake --build build
+      - name: 上传 Ubuntu 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-build
+          path: build/
+          retention-days: 30
