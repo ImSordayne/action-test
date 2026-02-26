@@ -8,32 +8,38 @@ jobs:
       - uses: TheMrMilchmann/setup-msvc-dev@v4.0.0
         with:
           arch: x64
-      - name: 测试CMake
-        run: cmake --version
-      - name: 测试MSVC
-        run: cl
-      - name: 测试Ninja
-        run: ninja --version
+      - uses: lukka/run-vcpkg@v11.5
+      - name: 测试构建环境
+        shell: cmd
+        run: |
+          cmake --version
+          cl
+          ninja --version
+          vcpkg --version
+          echo %vcpkg_root%
 
   test-osx:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 测试CMake
-        run: cmake --version
-      - name: 测试clang
-        run: clang -v
-      - name: 测试Ninja
-        run: ninja --version
+      - uses: lukka/run-vcpkg@v11.5
+      - name: 测试构建环境
+        run: |
+          cmake --version
+          clang -v
+          ninja --version
+          vcpkg --version
+          echo ${vcpkg_root}
 
   test-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 测试CMake
-        run: cmake --version
-      - name: 测试GCC
-        run: g++ -v
-      - name: 测试Ninja
-        run: ninja --version
-#this is a change
+      - uses: lukka/run-vcpkg@v11.5
+      - name: 测试构建环境
+        run: |
+          cmake --version
+          g++ --version
+          ninja --version
+          vcpkg --version
+          echo ${vcpkg_root}
