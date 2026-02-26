@@ -1,0 +1,34 @@
+name: test
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: 测试CMake
+        run: cmake --version
+      - name: 测试MSVC
+        run: cl
+      - name: 测试Ninja
+        run: ninja --version
+
+  test-osx:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: 测试CMake
+        run: cmake --version
+      - name: 测试clang
+        run: clang -v
+      - name: 测试Ninja
+        run: ninja --version
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: 测试CMake
+        run: cmake --version
+      - name: 测试GCC
+        run: g++ -v
+      - name: 测试Ninja
+        run: ninja --version
