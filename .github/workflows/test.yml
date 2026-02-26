@@ -5,7 +5,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: microsoft/setup-msvc@v4.0.0
+      - uses: TheMrMilchmann/setup-msvc-dev@v4.0.0
       - name: 测试CMake
         run: cmake --version
       - name: 测试MSVC
