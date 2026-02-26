@@ -1,0 +1,44 @@
+name: test
+on: [push]
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: TheMrMilchmann/setup-msvc-dev@v4.0.0
+        with:
+          arch: x64
+      - name: 生成 CMake 缓存
+        shell: cmd
+        run: |
+          cmake -S. -B build -G Ninja
+      - name: 编译
+        shell: cmd
+        run: |
+          cmake --build build 
+
+  test-osx:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: 生成 CMake 缓存
+        shell: cmd
+        run: |
+          cmake -S. -B build -G Ninja
+      - name: 编译
+        shell: cmd
+        run: |
+          cmake --build build 
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: 生成 CMake 缓存
+        shell: cmd
+        run: |
+          cmake -S. -B build -G Ninja
+      - name: 编译
+        shell: cmd
+        run: |
+          cmake --build build 
